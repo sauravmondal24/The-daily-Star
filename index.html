@@ -39,7 +39,7 @@
 							aria-expanded="false"
 							aria-label="Toggle navigation"
 						>
-							<span class="navbar-toggler-icon"></span>
+							<span class="navbar-toggler-icon bg-danger rounded"></span>
 						</button>
 
 						<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -64,7 +64,7 @@
 								<img
 									style="width: 30px"
 									class="img-fluid rounded-circle"
-									src="assets/images/saurav.png"
+									src="assets/images/shuvo.jpg"
 									alt=""
 								/>
 							</div>
@@ -73,7 +73,9 @@
 				</nav>
 				<hr />
 			</div>
+
 			<!-- Category section Start  -->
+
 			<div class="container">
 				<ul id="tab-list" class="nav nav-pills nav-fill"></ul>
 			</div>
@@ -81,9 +83,9 @@
 			<!-- Category section End -->
 
 			<!-- Item count section  -->
+
 			<section class="container">
 				<div
-					style="height: 60px"
 					id="item-counter"
 					class="item_message bg-white p-3 mt-3 rounded text-primary"
 				></div>
@@ -96,16 +98,16 @@
              Body Section Start 
         ===============================-->
 		<main>
-			<section>
-				<div class="container d-flex justify-content-between pt-5">
-					<div class="div d-flex align-items-center">
+			<section class="select-sec container">
+				<div class="row d-flex justify-content-between pt-5">
+					<div class="col-md-6 div d-flex align-items-center">
 						<h4>Sort By View: &nbsp;</h4>
 						<div class="form-floating">
 							<select
-								class="form-select"
+								class="form-select py-0"
 								id="floatingSelect"
 								aria-label="Floating label select example"
-								style="width: 200px"
+								style="width: 200px; height: 50px"
 							>
 								<option selected>Default</option>
 								<option value="1">One</option>
@@ -114,20 +116,20 @@
 							</select>
 						</div>
 					</div>
-					<div class="div">
+					<div class="col-md-6 text-end">
 						<div class="btn btn-primary">Today's Pick</div>
 						<div class="btn btn-outline-primary">Trending</div>
 					</div>
 				</div>
 			</section>
+
 			<section>
 				<div class="container">
-					<div id="news-card">
-						<!-- <div class="card mb-3"></div> -->
-					</div>
+					<div id="news-card"></div>
 				</div>
 			</section>
-			<section id="news-not-available" class="d-none">
+
+			<section id="news-not-available" class="d-none py-5">
 				<h2 class="text-center text-danger">News Not found in this Category</h2>
 			</section>
 
@@ -147,7 +149,7 @@
 							aria-hidden="true"
 						>
 							<div class="modal-dialog modal-xl">
-								<div class="modal-content p-4">
+								<div class="modal-content p-3">
 									<div class="modal-header">
 										<h4 class="modal-title" id="staticBackdropLabel"></h4>
 										<button
@@ -192,7 +194,7 @@
 
 		<!-- Footer section Start  -->
 		<footer>
-			<section class="bg-white text-center py-3">
+			<section class="bg-white text-center py-3 mt-5">
 				<div class="container">
 					<p class="fw-bold">
 						Copyright 2022 <span class="text-info">The Daily Star</span>
