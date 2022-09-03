@@ -1,4 +1,4 @@
-// Tab List Start
+// Category List Start
 
 let TabList = async () => {
 	let url = `https://openapi.programming-hero.com/api/news/categories`;
@@ -13,48 +13,45 @@ let TabList = async () => {
 };
 
 let tabDataDisplay = (data) => {
-	var categoryId = data.category_id;
-
-	for (const name of data) {
-		let tabList = document.getElementById('tab-list');
-
+	// var categoryId = data.category_id;
+	let tabList = document.getElementById('tab-list');
+	data.forEach((category) => {
 		let li = document.createElement('li');
-
 		li.innerHTML = `
-        <li onclick="categoryDetails()" class="nav-item">
-        <a class="nav-link fs-5 text-dark" aria-current="page" href="#">${name.category_name}</a>
+        <li  class="nav-item">
+        <a onclick="NewsFeed('${category.category_id}')" class="nav-link fs-5 text-dark" aria-current="page" href="#">${category.category_name}</a>
         </li>
         `;
 
 		tabList.appendChild(li);
-	}
+	});
 };
 
 TabList();
 
-let NewsFeed = async () => {
-	let url = `https://openapi.programming-hero.com/api/news/category/01`;
+//==================================
+//    News Displaying Section
+// ====================================
 
-	try {
-		let res = await fetch(url);
-		let data = await res.json();
-		newsFeedDisplay(data.data);
-	} catch (error) {
-		console.log(error);
-	}
-};
+let NewsFeed = (category_id) => {
+	let url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
 
-let newsFeedDisplay = (data) => {
-	// console.log(data);
-	let NewsCard = document.getElementById('news-card');
+	fetch(url)
+		.then((res) => res.json())
+		.then((data) => newsFeedDisplay(data.data))
+		.catch((error) => console.log(error));
 
-	data.forEach((allInfo) => {
-		console.log(allInfo);
-		let newsDisplay = document.createElement('div');
+	const newsFeedDisplay = (newses) => {
+		let NewsCard = document.getElementById('news-card');
+		NewsCard.textContent = '';
 
-		newsDisplay.classList.add('card', 'my-5');
+		newses.forEach((allInfo) => {
+			console.log('ForEach ar result', allInfo);
+			let newsDisplay = document.createElement('div');
 
-		newsDisplay.innerHTML = `
+			newsDisplay.classList.add('card', 'my-5', 'p-4');
+
+			newsDisplay.innerHTML = `
 		<div class="row g-0  d-flex align-items-center">
 		<div class="col-md-3">
 			<img
@@ -68,7 +65,7 @@ let newsFeedDisplay = (data) => {
 			<div class="card-body">
 				<h3 class="card-title">${allInfo.title}</h3>
 				<p class="card-text">
-					${allInfo.details}
+					${allInfo.details.slice(1, 300)}...
 				</p>
 
 				<div
@@ -104,7 +101,7 @@ let newsFeedDisplay = (data) => {
 						<i class="fa-regular fa-star"></i>
 					</div>
 					<div class="4">
-						<a class="btn" href="#"
+						<a onclick="newsDetails('${allInfo._id}')" class="btn" href="#"
 							><i class="fa-solid fa-arrow-right-long"></i
 						></a>
 						
@@ -114,13 +111,19 @@ let newsFeedDisplay = (data) => {
 		</div>
 	  </div>
 		
-		
-		
 		`;
-		NewsCard.appendChild(newsDisplay);
-	});
+			NewsCard.appendChild(newsDisplay);
+		});
 
-	// console.log(data);
+		// console.log(data);
+	};
 };
 
-NewsFeed();
+// const newsDetails = async (news_id) => {
+// 	const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+// 	let res = await fetch(url);
+// 	let data = await res.json();
+// 	// console.log(data);
+// };
+
+// newsDetails();
