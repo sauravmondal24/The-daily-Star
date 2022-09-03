@@ -91,7 +91,7 @@ let NewsFeed = (category_id) => {
 						</p>
 
 
-						<div class="row text-center  g-0 justify-content-between align-items-center">
+						<div class="row justify-content-between align-items-center">
 							<div class="col-md-5 post-owner">
 								<div class="card border-0" style="max-width: 250px">
 									<div class="row g-0">
@@ -99,10 +99,9 @@ let NewsFeed = (category_id) => {
 											<img
 												id="author-pic"
 												src="${allInfo.author ? allInfo.author.img : 'Data is not Found'}"
-												class="img-fluid rounded" 
+												class="rounded" 
 												alt="..." 
-												
-
+												style="width: 25%;"
 											/>
 										</div>
 										<div class="col-md-9">
@@ -154,6 +153,8 @@ let NewsFeed = (category_id) => {
 		toggleLoader(false);
 	};
 };
+
+// Loader function
 
 const toggleLoader = (isLoading) => {
 	let leaderSection = document.getElementById('loader');

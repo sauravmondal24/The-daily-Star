@@ -17,14 +17,14 @@ const displayNewsPage = (newsInfos) => {
 
 		modalBody.innerHTML = `
 
-            <img class="img-fluid rounded-start" style="width: 100%; height: 450px" src="${
+            <img class="img-fluid rounded-start" style="width: 100%;" src="${
 							newsInfo.image_url ? newsInfo.image_url : 'Data is not Found'
 						}" alt="">
             <p class="card-text py-3">${
 							newsInfo.details ? newsInfo.details : 'Data is not Found'
 						}</p>
 
-        <div class="row d-flex text-center justify-content-between align-items-center">
+        <div class="row d-flex justify-content-between align-items-center">
             <div class="col-md-4 post-owner">
                 <div class="card border-0" style="max-width: 250px">
                     <div class="row g-0">
@@ -37,6 +37,7 @@ const displayNewsPage = (newsInfos) => {
 																}"
                                 class="img-fluid rounded"
                                 alt="..."
+                                style="width: 25%;"
                             />
                         </div>
                         <div class="col-md-9">

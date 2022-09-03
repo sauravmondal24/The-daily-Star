@@ -9,7 +9,7 @@ const newsFeedDisplay = (newses) => {
 	let NewsCard = document.getElementById('news-card');
 	NewsCard.textContent = '';
 
-	// Item not Found
+	// Item not Found section
 
 	if (newses.length === 0) {
 		document.getElementById('news-not-available').classList.remove('d-none');
@@ -18,7 +18,7 @@ const newsFeedDisplay = (newses) => {
 		document.getElementById('news-not-available').classList.add('d-none');
 	}
 
-	// Items counter
+	// Items counter section
 	const itemCounterSMS = document.getElementById('item-counter');
 	itemCounterSMS.textContent = '';
 	const itemsMessage = document.createElement('div');
@@ -103,5 +103,4 @@ const newsFeedDisplay = (newses) => {
 		`;
 		NewsCard.appendChild(newsDisplay);
 	});
-	// toggleLoader(false);
 };
