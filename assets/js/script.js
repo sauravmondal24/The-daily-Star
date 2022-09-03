@@ -45,8 +45,14 @@ let NewsFeed = (category_id) => {
 		let NewsCard = document.getElementById('news-card');
 		NewsCard.textContent = '';
 
+		if (newses.length === 0) {
+			document.getElementById('news-not-available').classList.remove('d-none');
+		} else {
+			document.getElementById('news-not-available').classList.add('d-none');
+		}
+
 		newses.forEach((allInfo) => {
-			console.log('ForEach ar result', allInfo);
+			// console.log('ForEach ar result', allInfo);
 			let newsDisplay = document.createElement('div');
 
 			newsDisplay.classList.add('card', 'my-5', 'p-4');
@@ -101,9 +107,10 @@ let NewsFeed = (category_id) => {
 						<i class="fa-regular fa-star"></i>
 					</div>
 					<div class="4">
-						<a onclick="newsDetails('${allInfo._id}')" class="btn" href="#"
+						<button onclick="NewsPageDetails('${allInfo._id}')" data-bs-toggle="modal"
+						data-bs-target="#staticBackdrop" class="btn" href="#"
 							><i class="fa-solid fa-arrow-right-long"></i
-						></a>
+						></button>
 						
 					</div>
 				</div>
@@ -118,12 +125,3 @@ let NewsFeed = (category_id) => {
 		// console.log(data);
 	};
 };
-
-// const newsDetails = async (news_id) => {
-// 	const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
-// 	let res = await fetch(url);
-// 	let data = await res.json();
-// 	// console.log(data);
-// };
-
-// newsDetails();
