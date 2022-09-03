@@ -105,7 +105,7 @@ let NewsFeed = (category_id) => {
 											/>
 										</div>
 										<div class="col-md-9">
-											<div class="card-body">
+											<div class="card-body author-info">
 												<h6 class="card-title">${
 													allInfo.author
 														? allInfo.author.name
