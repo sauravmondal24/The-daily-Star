@@ -92,16 +92,16 @@ let NewsFeed = (category_id) => {
 
 
 						<div class="row justify-content-between align-items-center">
-							<div class="col-md-5 post-owner">
+							<div class="col-md-4 post-owner">
 								<div class="card border-0" style="max-width: 250px">
 									<div class="row g-0">
-										<div class="col-md-3 pt-3 ">
+										<div class="col-md-3 pt-3 pt-4 text-center">
 											<img
 												id="author-pic"
 												src="${allInfo.author ? allInfo.author.img : 'Data is not Found'}"
 												class="rounded" 
 												alt="..." 
-												style="width: 25%;"
+												style="width: 55%;"
 											/>
 										</div>
 										<div class="col-md-9">
@@ -123,7 +123,7 @@ let NewsFeed = (category_id) => {
 							</div>
 
 
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<h5><i class="fa-solid fa-eye"> </i> ${
 									allInfo.total_view ? allInfo.total_view : 'Data is Not Found'
 								} <span>M</span></h5>

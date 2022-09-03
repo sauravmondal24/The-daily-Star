@@ -1,3 +1,5 @@
+// Modal section
+
 const NewsPageDetails = (news_id) => {
 	const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
 	fetch(url)
@@ -24,11 +26,11 @@ const displayNewsPage = (newsInfos) => {
 							newsInfo.details ? newsInfo.details : 'Data is not Found'
 						}</p>
 
-        <div class="row d-flex justify-content-between align-items-center">
+        <div class="row justify-content-between align-items-center">
             <div class="col-md-4 post-owner">
                 <div class="card border-0" style="max-width: 250px">
                     <div class="row g-0">
-                        <div class="col-md-3 pt-3">
+                        <div class="col-md-3 pt-2">
                             <img
                                 src="${
 																	newsInfo.author
@@ -37,10 +39,10 @@ const displayNewsPage = (newsInfos) => {
 																}"
                                 class="img-fluid rounded"
                                 alt="..."
-                                style="width: 25%;"
+                                id="author-pic"
                             />
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-9 text-start">
                             <div class="card-body">
                                 <h6 class="card-title">${
 																	newsInfo.author

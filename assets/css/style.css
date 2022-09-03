@@ -3,4 +3,12 @@
 	.select-sec {
 		display: none;
 	}
+	#author-pic {
+		width: 60px !important;
+		text-align: start !important;
+	}
+}
+
+#author-pic {
+	width: 100%;
 }
