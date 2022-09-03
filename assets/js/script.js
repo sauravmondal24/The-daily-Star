@@ -46,12 +46,22 @@ let NewsFeed = (category_id) => {
 		let NewsCard = document.getElementById('news-card');
 		NewsCard.textContent = '';
 
+		// Item not Found
+
 		if (newses.length === 0) {
 			document.getElementById('news-not-available').classList.remove('d-none');
 			toggleLoader(false);
 		} else {
 			document.getElementById('news-not-available').classList.add('d-none');
 		}
+
+		// Items counter
+		const itemCounterSMS = document.getElementById('item-counter');
+		itemCounterSMS.textContent = '';
+		const itemsMessage = document.createElement('div');
+		itemsMessage.innerHTML = `
+         <h5>${newses.length} items found for category Entertainment</h5>`;
+		itemCounterSMS.appendChild(itemsMessage);
 
 		newses.forEach((allInfo) => {
 			// console.log('ForEach ar result', allInfo);
@@ -63,7 +73,7 @@ let NewsFeed = (category_id) => {
 		<div class="row g-0  d-flex align-items-center">
 		<div class="col-md-3">
 			<img
-				src="${allInfo.thumbnail_url}"
+				src="${allInfo.thumbnail_url ? allInfo.thumbnail_url : 'Data is not Fund'}"
 				class="img-fluid rounded-start"
 				alt="..."
 				style="width: 350px"
@@ -71,9 +81,11 @@ let NewsFeed = (category_id) => {
 		</div>
 		<div class="col-md-9">
 			<div class="card-body">
-				<h3 class="card-title">${allInfo.title}</h3>
+				<h3 class="card-title">${
+					allInfo.title ? allInfo.title : 'Data is not Fund'
+				}</h3>
 				<p class="card-text">
-					${allInfo.details.slice(1, 300)}...
+					${allInfo.details ? allInfo.details.slice(1, 300) : 'Data Is not Fund'}...
 				</p>
 
 				<div
@@ -84,22 +96,30 @@ let NewsFeed = (category_id) => {
 							<div class="row g-0">
 								<div class="col-md-3 pt-3">
 									<img
-										src="${allInfo.author.img}"
+										src="${allInfo.author ? allInfo.author.img : 'Data is not Fund'}"
 										class="img-fluid rounded"
 										alt="..."
 									/>
 								</div>
 								<div class="col-md-9">
 									<div class="card-body">
-										<h6 class="card-title">${allInfo.author.name}</h6>
-										<p class="card-text">${allInfo.author.published_date}</p>
+										<h6 class="card-title">${
+											allInfo.author ? allInfo.author.name : 'Data is not Fund'
+										}</h6>
+										<p class="card-text">${
+											allInfo.author
+												? allInfo.author.published_date
+												: 'Data is not Fund'
+										}</p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="2">
-						<h5><i class="fa-solid fa-eye"> </i> ${allInfo.total_view} <span>M</span></h5>
+						<h5><i class="fa-solid fa-eye"> </i> ${
+							allInfo.total_view ? allInfo.total_view : 'Data is Not Fund'
+						} <span>M</span></h5>
 					</div>
 					<div class="3">
 						<i class="fa-solid fa-star-half-stroke"></i>
@@ -123,8 +143,8 @@ let NewsFeed = (category_id) => {
 		`;
 			NewsCard.appendChild(newsDisplay);
 		});
+		toggleLoader(false);
 	};
-	// toggleLoader(false);
 };
 
 const toggleLoader = (isLoading) => {
