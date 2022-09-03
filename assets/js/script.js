@@ -13,7 +13,6 @@ let TabList = async () => {
 };
 
 let tabDataDisplay = (data) => {
-	// var categoryId = data.category_id;
 	let tabList = document.getElementById('tab-list');
 	data.forEach((category) => {
 		let li = document.createElement('li');
@@ -56,30 +55,31 @@ let NewsFeed = (category_id) => {
 		}
 
 		// Items counter
+
 		const itemCounterSMS = document.getElementById('item-counter');
 		itemCounterSMS.textContent = '';
 		const itemsMessage = document.createElement('div');
 		itemsMessage.innerHTML = `
-         <h5>${newses.length} items found for category Entertainment</h5>`;
+         <h5>  ${newses.length} items found for category Entertainment</h5>`;
 		itemCounterSMS.appendChild(itemsMessage);
 
-		newses.forEach((allInfo) => {
-			// console.log('ForEach ar result', allInfo);
-			let newsDisplay = document.createElement('div');
+		// News Display sec
 
+		newses.forEach((allInfo) => {
+			let newsDisplay = document.createElement('div');
 			newsDisplay.classList.add('card', 'my-5', 'p-4');
 
 			newsDisplay.innerHTML = `
-		<div class="row g-0  d-flex align-items-center">
-		<div class="col-md-3">
-			<img
+		 	<div class="row g-0  d-flex align-items-center">
+			<div class="col-md-3">
+				<img
 				src="${allInfo.thumbnail_url ? allInfo.thumbnail_url : 'Data is not Fund'}"
 				class="img-fluid rounded-start"
 				alt="..."
 				style="width: 350px"
-			/>
-		</div>
-		<div class="col-md-9">
+				/>
+			</div>
+			<div class="col-md-9">
 			<div class="card-body">
 				<h3 class="card-title">${
 					allInfo.title ? allInfo.title : 'Data is not Fund'
