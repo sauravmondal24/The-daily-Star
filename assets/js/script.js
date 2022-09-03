@@ -34,6 +34,7 @@ TabList();
 // ====================================
 
 let NewsFeed = (category_id) => {
+	toggleLoader(true);
 	let url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
 
 	fetch(url)
@@ -47,6 +48,7 @@ let NewsFeed = (category_id) => {
 
 		if (newses.length === 0) {
 			document.getElementById('news-not-available').classList.remove('d-none');
+			toggleLoader(false);
 		} else {
 			document.getElementById('news-not-available').classList.add('d-none');
 		}
@@ -121,7 +123,15 @@ let NewsFeed = (category_id) => {
 		`;
 			NewsCard.appendChild(newsDisplay);
 		});
-
-		// console.log(data);
 	};
+	// toggleLoader(false);
+};
+
+const toggleLoader = (isLoading) => {
+	let leaderSection = document.getElementById('loader');
+	if (isLoading) {
+		leaderSection.classList.remove('d-none');
+	} else {
+		leaderSection.classList.add('d-none');
+	}
 };
